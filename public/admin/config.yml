@@ -1,0 +1,9 @@
+backend:
+  name: github
+  repo: ВАШ_GITHUB_РЕПОЗИТОРИЙ
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections: []
