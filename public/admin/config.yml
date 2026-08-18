@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: ВАШ_GITHUB_РЕПОЗИТОРИЙ
+  repo: domik-v-kolomne3
   branch: main
 
 media_folder: "public/images"
