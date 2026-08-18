@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Domik-v-kolomne3
+  repo: Astroblazter
   branch: cloudflare-cms-test
 
 media_folder: "public/images"
