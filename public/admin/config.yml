@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Astroblaster
+  repo: Astroblazter
   branch: cloudflare-cms-test
 
 media_folder: "public/images"
