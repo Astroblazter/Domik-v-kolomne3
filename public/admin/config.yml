@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: "Astroblazter/Domik-v-kolomne3"
-  branch: "cloudflare-cms-test"
+  branch: "decap-cms-test"
   base_url: "https://domik-oauth-proxy.orlovdove.workers.dev"
 
 media_folder: "public/images"
