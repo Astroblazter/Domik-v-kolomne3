@@ -3,6 +3,7 @@ backend:
   repo: "Astroblazter/Domik-v-kolomne3"
   branch: "decap-cms-test"
   base_url: "https://domik-oauth-proxy.orlovdove.workers.dev"
+  auth_endpoint: "auth"
 
 media_folder: "public/images"
 public_folder: "/images"
