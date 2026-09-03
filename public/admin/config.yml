@@ -3,9 +3,12 @@ backend:
   repo: "Astroblazter/Domik-v-kolomne3"
   branch: "cloudflare-cms-test"
   base_url: "https://domik-oauth-proxy.orlovdove.workers.dev"
+  auth_endpoint: "auth"
 
 media_folder: "public/images"
 public_folder: "/images"
+
+locale: ru
 
 collections:
   - name: "news"
@@ -17,4 +20,3 @@ collections:
       - { label: "Заголовок", name: "title", widget: "string" }
       - { label: "Дата", name: "date", widget: "datetime" }
       - { label: "Текст", name: "body", widget: "markdown" }
-      
