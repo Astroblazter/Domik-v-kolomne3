@@ -1,4 +1,5 @@
-import { DIRECTOR, TEAM, type TeamMember } from '@/data/team';
+import { DIRECTOR } from '@/data/loadDirector'; 
+import { TEAM, type TeamMember } from '@/data/loadTeam';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 
