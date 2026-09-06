@@ -22,3 +22,28 @@ collections:
       - { label: "Фото анонса", name: "image", widget: "image" }
       - { label: "Краткое описание", name: "preview", widget: "text" }
       - { label: "Текст", name: "body", widget: "markdown" }
+  - name: "team"
+    label: "Труппа"
+    folder: "src/content/team"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Имя", name: "name", widget: "string" }
+      - { label: "Фото", name: "photo", widget: "image" }
+      - { label: "Роль", name: "role", widget: "string" }
+      - { label: "Краткая биография", name: "shortBio", widget: "text" }
+      - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
+  - name: "director"
+    label: "Режиссёр"
+    files:
+      - name: "director"
+        label: "Режиссёр"
+        file: "src/content/director.json"
+        fields:
+          - { label: "Имя", name: "name", widget: "string" }
+          - { label: "Фото", name: "photo", widget: "image" }
+          - { label: "Роль", name: "role", widget: "string" }
+          - { label: "Краткая биография", name: "shortBio", widget: "text" }
+          - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
