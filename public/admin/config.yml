@@ -7,7 +7,6 @@ backend:
 
 media_folder: "public/images"
 public_folder: "/images"
-
 locale: ru
 
 collections:
@@ -22,6 +21,7 @@ collections:
       - { label: "Фото анонса", name: "image", widget: "image" }
       - { label: "Краткое описание", name: "preview", widget: "text" }
       - { label: "Текст", name: "body", widget: "markdown" }
+
   - name: "team"
     label: "Труппа"
     folder: "src/content/team"
@@ -35,6 +35,7 @@ collections:
       - { label: "Роль", name: "role", widget: "string" }
       - { label: "Краткая биография", name: "shortBio", widget: "text" }
       - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
+
   - name: "director"
     label: "Режиссёр"
     files:
@@ -47,7 +48,8 @@ collections:
           - { label: "Роль", name: "role", widget: "string" }
           - { label: "Краткая биография", name: "shortBio", widget: "text" }
           - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
-   - name: "performances"
+
+  - name: "performances"
     label: "Спектакли"
     folder: "src/content/performances"
     create: true
