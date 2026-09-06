@@ -47,3 +47,18 @@ collections:
           - { label: "Роль", name: "role", widget: "string" }
           - { label: "Краткая биография", name: "shortBio", widget: "text" }
           - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
+   - name: "performances"
+    label: "Спектакли"
+    folder: "src/content/performances"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Автор", name: "author", widget: "string" }
+      - { label: "Длительность", name: "duration", widget: "string" }
+      - { label: "Возрастное ограничение", name: "age", widget: "string" }
+      - { label: "Обложка", name: "image", widget: "image" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Статус", name: "status", widget: "string", hint: "например: в репертуаре / премьера сезона" }
