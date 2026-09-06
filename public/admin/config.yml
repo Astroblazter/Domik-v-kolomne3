@@ -1,1 +1,66 @@
+backend:
+  name: github
+  repo: "Astroblazter/Domik-v-kolomne3"
+  branch: "cloudflare-cms-test"
+  base_url: "https://domik-oauth-proxy.orlovdove.workers.dev"
+  auth_endpoint: "auth"
 
+media_folder: "public/images"
+public_folder: "/images"
+locale: ru
+
+collections:
+  - name: "news"
+    label: "Новости"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Фото анонса", name: "image", widget: "image" }
+      - { label: "Краткое описание", name: "preview", widget: "text" }
+      - { label: "Текст", name: "body", widget: "markdown" }
+
+  - name: "team"
+    label: "Труппа"
+    folder: "src/content/team"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Имя", name: "name", widget: "string" }
+      - { label: "Фото", name: "photo", widget: "image" }
+      - { label: "Роль", name: "role", widget: "string" }
+      - { label: "Краткая биография", name: "shortBio", widget: "text" }
+      - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
+
+  - name: "director"
+    label: "Режиссёр"
+    files:
+      - name: "director"
+        label: "Режиссёр"
+        file: "src/content/director.json"
+        fields:
+          - { label: "Имя", name: "name", widget: "string" }
+          - { label: "Фото", name: "photo", widget: "image" }
+          - { label: "Роль", name: "role", widget: "string" }
+          - { label: "Краткая биография", name: "shortBio", widget: "text" }
+          - { label: "Роли в театре", name: "theatreRoles", widget: "string" }
+
+  - name: "performances"
+    label: "Спектакли"
+    folder: "src/content/performances"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Автор", name: "author", widget: "string" }
+      - { label: "Длительность", name: "duration", widget: "string" }
+      - { label: "Возрастное ограничение", name: "age", widget: "string" }
+      - { label: "Обложка", name: "image", widget: "image" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Статус", name: "status", widget: "string", hint: "например: в репертуаре / премьера сезона" }
