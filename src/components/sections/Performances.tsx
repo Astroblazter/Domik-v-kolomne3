@@ -1,4 +1,4 @@
-import { PERFORMANCES } from '@/data/content';
+import { PERFORMANCES } from '@/data/loadPerformances';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
