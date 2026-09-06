@@ -19,4 +19,6 @@ collections:
     fields:
       - { label: "Заголовок", name: "title", widget: "string" }
       - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Фото анонса", name: "image", widget: "image" }
+      - { label: "Краткое описание", name: "preview", widget: "text" }
       - { label: "Текст", name: "body", widget: "markdown" }
