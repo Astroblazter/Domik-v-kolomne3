@@ -1,4 +1,4 @@
-import { NEWS } from '@/data/content';
+import { NEWS } from '@/data/loadNews';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { ArrowRight } from 'lucide-react';
