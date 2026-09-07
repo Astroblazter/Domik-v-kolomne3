@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { GALLERY } from '@/data/content';
+import { GALLERY } from '@/data/loadGallery';
 import { SectionHeading } from '@/components/SectionHeading';
 
 export function Gallery() {
