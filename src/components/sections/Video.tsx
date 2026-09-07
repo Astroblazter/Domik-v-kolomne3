@@ -1,4 +1,4 @@
-import { VIDEOS } from '@/data/content';
+import { VIDEOS } from '@/data/loadVideo';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Film } from 'lucide-react';
