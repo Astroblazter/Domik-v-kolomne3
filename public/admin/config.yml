@@ -83,3 +83,39 @@ collections:
             fields:
               - { label: "Название", name: "label", widget: "string" }
               - { label: "Ссылка", name: "href", widget: "string" }
+
+  - name: "schedule"
+    label: "Афиша"
+    folder: "src/content/schedule"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Дата", name: "date", widget: "string", hint: "например: 15 сентября" }
+      - { label: "Время", name: "time", widget: "string", hint: "например: 18:00" }
+      - { label: "Площадка", name: "venue", widget: "string" }
+      - { label: "Спектакль", name: "performance", widget: "string" }
+
+  - name: "gallery"
+    label: "Галерея"
+    files:
+      - name: "gallery"
+        label: "Галерея"
+        file: "src/content/gallery.json"
+        fields:
+          - label: "Фотографии"
+            name: "images"
+            widget: "list"
+            field: { label: "Фото", name: "image", widget: "image" }
+
+  - name: "video"
+    label: "Видео"
+    folder: "src/content/video"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Обложка (постер)", name: "poster", widget: "image" }
+      - { label: "Название", name: "title", widget: "string" }
