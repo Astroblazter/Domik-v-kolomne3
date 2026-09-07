@@ -1,4 +1,4 @@
-import { CONTACTS } from '@/data/content';
+import { CONTACTS } from '@/data/loadContacts';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
