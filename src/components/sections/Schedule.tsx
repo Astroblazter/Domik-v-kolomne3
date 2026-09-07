@@ -1,4 +1,4 @@
-import { SCHEDULE } from '@/data/content';
+import { SCHEDULE } from '@/data/loadSchedule';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
