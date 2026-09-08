@@ -29,21 +29,18 @@ export function About() {
             </div>
           </div>
         </Reveal>
-
         {/* Text */}
         <div className="order-2">
           <SectionHeading
             eyebrow="О театре"
             title="Мы прежде всего театр"
           />
-
           {/* Demo notice */}
           <Reveal delay={80}>
             <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent-700">
               {ABOUT_BADGE}
             </p>
           </Reveal>
-
           <div className="mt-8 space-y-5 text-base leading-relaxed text-muted">
             {ABOUT_PARAGRAPHS.map((p, i) => (
               <Reveal key={i} delay={120 + i * 60}>
@@ -51,14 +48,12 @@ export function About() {
               </Reveal>
             ))}
           </div>
-
           {/* Quote */}
           <Reveal delay={420}>
             <blockquote className="mt-8 border-l-2 border-accent/40 pl-5 text-lg font-medium italic leading-relaxed text-ink">
               {ABOUT_QUOTE}
             </blockquote>
           </Reveal>
-
           <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4" delay={200}>
             {ABOUT_FACTS.map((fact) => (
               <div key={fact.label} className="border-l border-hairline pl-4">
@@ -69,7 +64,6 @@ export function About() {
           </Reveal>
         </div>
       </div>
-
       {/* Director + troupe */}
       <div className="container-x">
         <Team />
