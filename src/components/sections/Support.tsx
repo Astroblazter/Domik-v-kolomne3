@@ -1,4 +1,4 @@
-import { IMG, SUPPORT_OPTIONS, SUPPORT_LEAD, SUPPORT_USES } from '@/data/content';
+import { SUPPORT_IMAGE, SUPPORT_OPTIONS, SUPPORT_LEAD, SUPPORT_USES, SUPPORT_BUTTON_NOTE } from '@/data/loadSupport';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
@@ -9,14 +9,13 @@ export function Support() {
     <section id="support" className="relative section-y overflow-hidden">
       {/* Atmospheric photo background */}
       <img
-        src={IMG.support}
+        src={SUPPORT_IMAGE}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
         loading="lazy"
       />
       <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
-
       <div className="relative container-x">
         <div className="max-w-2xl">
           <SectionHeading
@@ -26,7 +25,6 @@ export function Support() {
             intro={SUPPORT_LEAD}
           />
         </div>
-
         {/* What donations support */}
         <Reveal className="mt-8 max-w-2xl" delay={80}>
           <p className="text-sm uppercase tracking-[0.18em] text-white/70">
@@ -40,7 +38,6 @@ export function Support() {
             ))}
           </ul>
         </Reveal>
-
         {/* Donate button */}
         <Reveal className="mt-10" delay={140}>
           <Button as="a" href="#contacts" variant="primary" size="lg" className="!bg-accent !text-white">
@@ -48,10 +45,9 @@ export function Support() {
             <ArrowRight size={18} />
           </Button>
           <p className="mt-3 text-xs text-white/60">
-            Демонстрационная кнопка — платёжная система будет подключена позже.
+            {SUPPORT_BUTTON_NOTE}
           </p>
         </Reveal>
-
         <div className="mt-12 grid gap-5 sm:grid-cols-3">
           {SUPPORT_OPTIONS.map((opt, i) => (
             <Reveal key={opt.id} delay={(i % 3) * 70}>
