@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '@/data/content';
 import { Logo } from '@/components/Logo';
+import { BRANDING_LOGO, BRANDING_SITE_NAME, BRANDING_TAGLINE } from '@/data/loadBranding';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,19 +40,18 @@ export function Header() {
             solid ? 'text-ink' : 'text-white'
           }`}
         >
-          <Logo />
+          <Logo src={BRANDING_LOGO} />
           <span className="flex flex-col leading-tight">
-            <span className="text-base font-semibold tracking-tight">Домик в Коломне</span>
+            <span className="text-base font-semibold tracking-tight">{BRANDING_SITE_NAME}</span>
             <span
               className={`text-[11px] font-medium uppercase tracking-[0.18em] ${
                 solid ? 'text-muted' : 'text-white/70'
               }`}
             >
-              Инклюзивный театр
+              {BRANDING_TAGLINE}
             </span>
           </span>
         </a>
-
         {/* Desktop nav */}
         <nav
           aria-label="Основная навигация"
@@ -69,7 +69,6 @@ export function Header() {
             </a>
           ))}
         </nav>
-
         {/* Mobile trigger */}
         <button
           type="button"
@@ -84,7 +83,6 @@ export function Header() {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
-
       {/* Mobile drawer */}
       <div
         id="mobile-menu"
