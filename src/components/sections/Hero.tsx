@@ -1,5 +1,5 @@
 import { ArrowDown } from 'lucide-react';
-import { IMG } from '@/data/content';
+import { HERO_IMAGE, HERO_EYEBROW, HERO_TITLE_LINE1, HERO_TITLE_ITALIC, HERO_SUBTITLE, HERO_DESCRIPTION } from '@/data/loadHero';
 import { Button } from '@/components/Button';
 
 export function Hero() {
@@ -11,43 +11,41 @@ export function Hero() {
     >
       {/* Background photo */}
       <img
-        src={IMG.hero}
+        src={HERO_IMAGE}
         alt="Освещённая театральная сцена перед началом спектакля"
         className="absolute inset-0 h-full w-full object-cover"
         fetchPriority="high"
       />
       {/* 40% dark overlay for readable text */}
       <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
-
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-container px-6 text-center text-white sm:px-8 lg:px-12">
         <p
           className="eyebrow !text-white/80 mb-6 animate-fade-in"
           style={{ animationDelay: '120ms' }}
         >
-          Санкт-Петербург
+          {HERO_EYEBROW}
         </p>
         <h1
           className="text-4xl font-medium leading-[1.1] tracking-tight animate-fade-up sm:text-5xl lg:text-7xl"
           style={{ animationDelay: '200ms' }}
         >
-          Инклюзивный театр
+          {HERO_TITLE_LINE1}
           <br />
-          <span className="italic">«Домик в Коломне»</span>
+          <span className="italic">{HERO_TITLE_ITALIC}</span>
         </h1>
         <p
           className="mx-auto mt-7 max-w-xl text-lg text-white/90 animate-fade-up sm:text-xl"
           style={{ animationDelay: '360ms' }}
         >
-          Театр, в котором каждый человек может стать частью истории.
+          {HERO_SUBTITLE}
         </p>
         <p
           className="mx-auto mt-4 max-w-2xl text-sm text-white/75 animate-fade-up sm:text-base"
           style={{ animationDelay: '440ms' }}
         >
-          Мы создаём спектакли вместе — актёры, режиссёр, семьи и зрители. Здесь важны не ограничения, а возможность быть услышанным, увидеть другого и рассказать свою историю.
+          {HERO_DESCRIPTION}
         </p>
-
         <div
           className="mt-10 flex flex-col items-center justify-center gap-3 animate-fade-up sm:flex-row sm:gap-4"
           style={{ animationDelay: '520ms' }}
@@ -66,7 +64,6 @@ export function Hero() {
           </Button>
         </div>
       </div>
-
       {/* Scroll indicator */}
       <a
         href="#about"
