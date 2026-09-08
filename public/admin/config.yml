@@ -141,3 +141,51 @@ collections:
             fields:
               - { label: "Значение", name: "value", widget: "string" }
               - { label: "Подпись", name: "label", widget: "string" }
+
+  - name: "support"
+    label: "Поддержать театр"
+    files:
+      - name: "support"
+        label: "Поддержать театр"
+        file: "src/content/support.json"
+        fields:
+          - { label: "Фоновое фото", name: "image", widget: "image" }
+          - { label: "Вступительный текст", name: "lead", widget: "text" }
+          - label: "На что идут пожертвования"
+            name: "uses"
+            widget: "list"
+            field: { label: "Пункт", name: "use", widget: "string" }
+          - label: "Способы поддержки"
+            name: "options"
+            widget: "list"
+            fields:
+              - { label: "Название", name: "label", widget: "string" }
+              - { label: "Описание", name: "description", widget: "text" }
+              - { label: "Ссылка", name: "href", widget: "string" }
+          - { label: "Подпись под кнопкой", name: "buttonNote", widget: "string" }
+
+  - name: "hero"
+    label: "Главный экран"
+    files:
+      - name: "hero"
+        label: "Главный экран"
+        file: "src/content/hero.json"
+        fields:
+          - { label: "Фоновое фото", name: "image", widget: "image" }
+          - { label: "Город (подпись сверху)", name: "eyebrow", widget: "string" }
+          - { label: "Заголовок (первая строка)", name: "titleLine1", widget: "string" }
+          - { label: "Заголовок (курсивом)", name: "titleItalic", widget: "string" }
+          - { label: "Подзаголовок", name: "subtitle", widget: "string" }
+          - { label: "Описание", name: "description", widget: "text" }
+
+  - name: "branding"
+    label: "Логотип и название"
+    files:
+      - name: "branding"
+        label: "Логотип и название"
+        file: "src/content/branding.json"
+        fields:
+          - { label: "Логотип", name: "logo", widget: "image", required: false, hint: "Если не загружено — используется стандартный логотип" }
+          - { label: "Название театра (в шапке)", name: "siteName", widget: "string" }
+          - { label: "Подпись (в шапке)", name: "tagline", widget: "string" }
+          - { label: "Описание (в подвале сайта)", name: "footerDescription", widget: "text" }
