@@ -1,9 +1,10 @@
-import { CONTACTS, NAV_ITEMS } from '@/data/content';
+import { NAV_ITEMS } from '@/data/content';
+import { CONTACTS } from '@/data/loadContacts';
 import { Logo } from '@/components/Logo';
+import { BRANDING_LOGO, BRANDING_SITE_NAME, BRANDING_TAGLINE, BRANDING_FOOTER_DESCRIPTION } from '@/data/loadBranding';
 
 export function Footer() {
   const year = new Date().getFullYear();
-
   return (
     <footer className="border-t border-hairline bg-surface/60">
       <div className="container-x py-14">
@@ -11,20 +12,19 @@ export function Footer() {
           {/* Brand */}
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
-              <Logo />
+              <Logo src={BRANDING_LOGO} />
               <div>
                 <div className="text-base font-semibold tracking-tight text-ink">
-                  Домик в Коломне
+                  {BRANDING_SITE_NAME}
                 </div>
                 <div className="text-xs uppercase tracking-[0.18em] text-muted">
-                  Инклюзивный театр · Санкт-Петербург
+                  {BRANDING_TAGLINE} · {CONTACTS.city}
                 </div>
               </div>
             </div>
             <p className="mt-5 text-sm leading-relaxed text-muted">
-              Независимый инклюзивный театр, где каждый может стать частью истории.
+              {BRANDING_FOOTER_DESCRIPTION}
             </p>
-
             {/* Socials */}
             <div className="mt-5 flex flex-wrap gap-2">
               {CONTACTS.socials.map((s) => (
@@ -38,7 +38,6 @@ export function Footer() {
               ))}
             </div>
           </div>
-
           {/* Nav */}
           <nav aria-label="Навигация в подвале" className="grid grid-cols-2 gap-x-10 gap-y-2.5 sm:grid-cols-3">
             {NAV_ITEMS.map((item) => (
@@ -52,9 +51,8 @@ export function Footer() {
             ))}
           </nav>
         </div>
-
         <div className="mt-12 flex flex-col gap-4 border-t border-hairline pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Инклюзивный театр «Домик в Коломне»</p>
+          <p>© {year} {CONTACTS.name}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a href="#privacy" className="transition-colors hover:text-primary">
               Политика конфиденциальности
