@@ -119,3 +119,25 @@ collections:
     fields:
       - { label: "Обложка (постер)", name: "poster", widget: "image" }
       - { label: "Название", name: "title", widget: "string" }
+
+  - name: "about"
+    label: "О театре"
+    files:
+      - name: "about"
+        label: "О театре"
+        file: "src/content/about.json"
+        fields:
+          - { label: "Фото (основное)", name: "image", widget: "image" }
+          - { label: "Фото (дополнительное)", name: "imageWide", widget: "image" }
+          - { label: "Текст-плашка", name: "badge", widget: "string" }
+          - label: "Абзацы текста"
+            name: "paragraphs"
+            widget: "list"
+            field: { label: "Абзац", name: "paragraph", widget: "text" }
+          - { label: "Цитата", name: "quote", widget: "text" }
+          - label: "Факты"
+            name: "facts"
+            widget: "list"
+            fields:
+              - { label: "Значение", name: "value", widget: "string" }
+              - { label: "Подпись", name: "label", widget: "string" }
