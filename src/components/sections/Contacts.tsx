@@ -12,7 +12,6 @@ export function Contacts() {
           title="Где нас найти"
           intro="Демонстрационная контактная информация. Когда сайт будет наполнен реальными данными, здесь появятся адрес, телефон и почта театра."
         />
-
         <Reveal className="mt-12 max-w-2xl">
           <div className="rounded-2xl border border-hairline bg-surface p-6">
             <div className="text-base font-medium text-ink">{CONTACTS.name}</div>
@@ -20,7 +19,6 @@ export function Contacts() {
               {CONTACTS.city}
             </div>
           </div>
-
           <div className="mt-px grid gap-px overflow-hidden rounded-2xl border border-t-0 border-hairline bg-hairline sm:grid-cols-2">
             <ContactRow icon={<MapPin size={20} />} label="Адрес">
               {CONTACTS.address}
@@ -34,17 +32,19 @@ export function Contacts() {
             <ContactRow icon={<ExternalLink size={20} />} label="Мы в сетях">
               <div className="flex flex-wrap gap-2">
                 {CONTACTS.socials.map((s) => (
-                  <span
+                  <a
                     key={s.label}
-                    className="inline-flex items-center rounded-full border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink"
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink transition-colors hover:border-primary/40 hover:text-primary"
                   >
                     {s.label}
-                  </span>
+                  </a>
                 ))}
               </div>
             </ContactRow>
           </div>
-
           <p className="mt-5 text-xs text-muted">
             Контактные данные — демонстрационные. Реальные адрес, телефон и ссылки будут добавлены позже.
           </p>
