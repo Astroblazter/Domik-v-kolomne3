@@ -1,4 +1,4 @@
-import { DIRECTOR } from '@/data/loadDirector'; 
+import { DIRECTOR } from '@/data/loadDirector';
 import { TEAM, type TeamMember } from '@/data/loadTeam';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
@@ -41,10 +41,6 @@ export function Team() {
                 {DIRECTOR.theatreRoles}
               </p>
             </div>
-
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent-700">
-              Демонстрационный текст — будет заменён реальной информацией
-            </p>
           </div>
         </div>
       </Reveal>
@@ -74,7 +70,6 @@ function ActorCard({ member }: { member: TeamMember }) {
   const alt = `${member.name} — участник труппы театра «Домик в Коломне»`;
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface/50 shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-lift">
-      {/* Photo ~60% of card height */}
       <div className="overflow-hidden">
         <img
           src={member.photo}
@@ -83,8 +78,6 @@ function ActorCard({ member }: { member: TeamMember }) {
           loading="lazy"
         />
       </div>
-
-      {/* Text */}
       <div className="flex flex-1 flex-col p-5">
         <h4 className="text-lg font-medium text-ink">{member.name}</h4>
         <div className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-primary">
