@@ -189,3 +189,16 @@ collections:
           - { label: "Название театра (в шапке)", name: "siteName", widget: "string" }
           - { label: "Подпись (в шапке)", name: "tagline", widget: "string" }
           - { label: "Описание (в подвале сайта)", name: "footerDescription", widget: "text" }
+
+  - name: "reviews"
+    label: "Отзывы"
+    folder: "src/content/reviews"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Ключевая фраза (для превью)", name: "keyPhrase", widget: "text", hint: "Короткая цитата — будет видна на карточке до открытия полного текста" }
+      - { label: "Полный текст отзыва", name: "fullText", widget: "text" }
+      - { label: "Автор", name: "author", widget: "string" }
+      - { label: "Источник", name: "source", widget: "string" }
