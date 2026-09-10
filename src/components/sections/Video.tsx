@@ -1,7 +1,7 @@
+import { Film } from 'lucide-react';
 import { VIDEOS } from '@/data/loadVideo';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
-import { Film } from 'lucide-react';
 
 export function Video() {
   return (
@@ -9,17 +9,16 @@ export function Video() {
       <div className="container-x">
         <SectionHeading
           eyebrow="Видео"
-          title="Театр в движении"
-          intro="Демонстрационные карточки видео. Когда материалы будут готовы, здесь появятся трейлеры, записи закулисья и разговоры о спектаклях."
+          title="Видео спектаклей, моменты репетиций и наших встреч"
+          intro="Небольшие видеозарисовки из жизни театра — прямо со сцены и из-за кулис."
         />
-
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {VIDEOS.map((v, i) => (
-            <Reveal key={v.id} delay={(i % 3) * 80}>
+          {VIDEOS.map((video, i) => (
+            <Reveal key={video.id} delay={(i % 3) * 80}>
               <div className="group relative block w-full overflow-hidden rounded-2xl shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-lift">
                 <img
-                  src={v.poster}
-                  alt={`Демонстрационное превью видео — карточка ${i + 1}`}
+                  src={video.poster}
+                  alt={video.title}
                   className="aspect-video w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.03]"
                   loading="lazy"
                 />
@@ -30,8 +29,7 @@ export function Video() {
                   </span>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-5 text-left">
-                  <h3 className="text-lg font-medium text-white">{v.title}</h3>
-                  <p className="mt-1 text-sm text-white/80">[Ссылка на Rutube]</p>
+                  <h3 className="text-lg font-medium text-white">{video.title}</h3>
                 </div>
               </div>
             </Reveal>
