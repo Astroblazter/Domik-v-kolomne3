@@ -159,7 +159,7 @@ export function Performances() {
                 </div>
               )}
 
-              <div className="mt-7">
+              <div className="mt-7" onClick={() => setSelectedId(null)}>
                 <Button as="a" href="#contacts" variant="primary" size="md">
                   Записаться
                 </Button>
