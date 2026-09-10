@@ -163,7 +163,9 @@ collections:
               - { label: "Название", name: "label", widget: "string" }
               - { label: "Описание", name: "description", widget: "text" }
               - { label: "Ссылка", name: "href", widget: "string" }
+              - { label: "Открывать окно с пояснением о пожертвовании (вместо перехода по ссылке)", name: "showDonateInfo", widget: "boolean", default: false, required: false }
           - { label: "Подпись под кнопкой", name: "buttonNote", widget: "string" }
+          - { label: "Текст окна с пояснением о пожертвовании", name: "donateInfoText", widget: "text", required: false }
 
   - name: "hero"
     label: "Главный экран"
