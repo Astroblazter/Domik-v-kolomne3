@@ -10,7 +10,7 @@ export function Contacts() {
         <SectionHeading
           eyebrow="Контакты"
           title="Где нас найти"
-          intro="Демонстрационная контактная информация. Когда сайт будет наполнен реальными данными, здесь появятся адрес, телефон и почта театра."
+          intro={CONTACTS.intro}
         />
         <Reveal className="mt-12 max-w-2xl">
           <div className="rounded-2xl border border-hairline bg-surface p-6">
@@ -45,9 +45,6 @@ export function Contacts() {
               </div>
             </ContactRow>
           </div>
-          <p className="mt-5 text-xs text-muted">
-            Контактные данные — демонстрационные. Реальные адрес, телефон и ссылки будут добавлены позже.
-          </p>
         </Reveal>
       </div>
     </section>
