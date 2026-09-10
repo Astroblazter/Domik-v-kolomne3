@@ -73,6 +73,7 @@ collections:
         file: "src/content/contacts.json"
         fields:
           - { label: "Название театра", name: "name", widget: "string" }
+          - { label: "Вступительный текст", name: "intro", widget: "text", default: "Наша основная площадка, где мы собираемся, проводим репетиции и выступаем, находится в историческом центре Санкт-Петербурга. Но мы с радостью приедем к Вам! Пожалуйста, пишите и звоните ))" }
           - { label: "Город", name: "city", widget: "string" }
           - { label: "Адрес", name: "address", widget: "string" }
           - { label: "Телефон", name: "phone", widget: "string" }
