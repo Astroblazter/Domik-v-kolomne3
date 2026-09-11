@@ -6,19 +6,27 @@ import {
   SUPPORT_USES,
   SUPPORT_BUTTON_NOTE,
   SUPPORT_DONATE_INFO_TEXT,
+  SUPPORT_PARTNER_INFO_TEXT,
 } from '@/data/loadSupport';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
 import { ArrowRight, X } from 'lucide-react';
 
+type InfoModal = 'donate' | 'partner' | null;
+
+const MODAL_CONTENT: Record<Exclude<InfoModal, null>, { title: string; text: string }> = {
+  donate: { title: 'Поддержать театр', text: SUPPORT_DONATE_INFO_TEXT },
+  partner: { title: 'Стать партнёром', text: SUPPORT_PARTNER_INFO_TEXT },
+};
+
 export function Support() {
-  const [donateOpen, setDonateOpen] = useState(false);
+  const [infoModal, setInfoModal] = useState<InfoModal>(null);
 
   useEffect(() => {
-    if (!donateOpen) return;
+    if (!infoModal) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDonateOpen(false);
+      if (e.key === 'Escape') setInfoModal(null);
     };
     window.addEventListener('keydown', onKeyDown);
     document.body.style.overflow = 'hidden';
@@ -26,7 +34,7 @@ export function Support() {
       window.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
     };
-  }, [donateOpen]);
+  }, [infoModal]);
 
   return (
     <section id="support" className="relative section-y overflow-hidden">
@@ -67,7 +75,7 @@ export function Support() {
             variant="primary"
             size="lg"
             className="!bg-accent !text-white"
-            onClick={() => setDonateOpen(true)}
+            onClick={() => setInfoModal('donate')}
           >
             Поддержать театр
             <ArrowRight size={18} />
@@ -77,61 +85,65 @@ export function Support() {
           </p>
         </Reveal>
         <div className="mt-12 grid gap-5 sm:grid-cols-3">
-          {SUPPORT_OPTIONS.map((opt, i) => (
-            <Reveal key={opt.id} delay={(i % 3) * 70}>
-              {opt.showDonateInfo ? (
-                <button
-                  type="button"
-                  onClick={() => setDonateOpen(true)}
-                  className="group flex h-full w-full flex-col rounded-2xl bg-white/10 p-6 text-left text-white backdrop-blur-sm transition-all duration-500 ease-smooth hover:-translate-y-1 hover:bg-white/15"
-                >
-                  <h3 className="text-lg font-medium">{opt.label}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/80">
-                    {opt.description}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
-                    Узнать больше
-                    <ArrowRight
-                      size={15}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </span>
-                </button>
-              ) : (
-                <a
-                  href={opt.href}
-                  className="group flex h-full flex-col rounded-2xl bg-white/10 p-6 text-white backdrop-blur-sm transition-all duration-500 ease-smooth hover:-translate-y-1 hover:bg-white/15"
-                >
-                  <h3 className="text-lg font-medium">{opt.label}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/80">
-                    {opt.description}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
-                    Узнать больше
-                    <ArrowRight
-                      size={15}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </span>
-                </a>
-              )}
-            </Reveal>
-          ))}
+          {SUPPORT_OPTIONS.map((opt, i) => {
+            const modalKey: InfoModal = opt.showDonateInfo
+              ? 'donate'
+              : opt.showPartnerInfo
+                ? 'partner'
+                : null;
+
+            const cardInner = (
+              <>
+                <h3 className="text-lg font-medium">{opt.label}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/80">
+                  {opt.description}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
+                  Узнать больше
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </span>
+              </>
+            );
+
+            const cardClassName =
+              'group flex h-full flex-col rounded-2xl bg-white/10 p-6 text-white backdrop-blur-sm transition-all duration-500 ease-smooth hover:-translate-y-1 hover:bg-white/15';
+
+            return (
+              <Reveal key={opt.id} delay={(i % 3) * 70}>
+                {modalKey ? (
+                  <button
+                    type="button"
+                    onClick={() => setInfoModal(modalKey)}
+                    className={`w-full text-left ${cardClassName}`}
+                  >
+                    {cardInner}
+                  </button>
+                ) : (
+                  <a href={opt.href} className={cardClassName}>
+                    {cardInner}
+                  </a>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
 
-      {/* Donation info modal */}
-      {donateOpen && (
+      {/* Info modal (donate / partner) */}
+      {infoModal && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 animate-fade-in"
-          onClick={() => setDonateOpen(false)}
+          onClick={() => setInfoModal(null)}
           role="dialog"
           aria-modal="true"
-          aria-label="Как поддержать театр"
+          aria-label={MODAL_CONTENT[infoModal].title}
         >
           <button
             type="button"
-            onClick={() => setDonateOpen(false)}
+            onClick={() => setInfoModal(null)}
             aria-label="Закрыть"
             className="absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
           >
@@ -143,10 +155,10 @@ export function Support() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-2xl font-medium tracking-tight text-ink">
-              Поддержать театр
+              {MODAL_CONTENT[infoModal].title}
             </h3>
             <p className="mt-5 whitespace-pre-line text-base leading-relaxed text-muted">
-              {SUPPORT_DONATE_INFO_TEXT}
+              {MODAL_CONTENT[infoModal].text}
             </p>
           </div>
         </div>
