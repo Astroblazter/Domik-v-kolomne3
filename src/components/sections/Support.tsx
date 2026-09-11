@@ -7,17 +7,19 @@ import {
   SUPPORT_BUTTON_NOTE,
   SUPPORT_DONATE_INFO_TEXT,
   SUPPORT_PARTNER_INFO_TEXT,
+  SUPPORT_INVITE_INFO_TEXT,
 } from '@/data/loadSupport';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
 import { ArrowRight, X } from 'lucide-react';
 
-type InfoModal = 'donate' | 'partner' | null;
+type InfoModal = 'donate' | 'partner' | 'invite' | null;
 
 const MODAL_CONTENT: Record<Exclude<InfoModal, null>, { title: string; text: string }> = {
   donate: { title: 'Поддержать театр', text: SUPPORT_DONATE_INFO_TEXT },
   partner: { title: 'Стать партнёром', text: SUPPORT_PARTNER_INFO_TEXT },
+  invite: { title: 'Пригласить театр', text: SUPPORT_INVITE_INFO_TEXT },
 };
 
 export function Support() {
@@ -90,7 +92,9 @@ export function Support() {
               ? 'donate'
               : opt.showPartnerInfo
                 ? 'partner'
-                : null;
+                : opt.showInviteInfo
+                  ? 'invite'
+                  : null;
 
             const cardInner = (
               <>
@@ -132,7 +136,7 @@ export function Support() {
         </div>
       </div>
 
-      {/* Info modal (donate / partner) */}
+      {/* Info modal (donate / partner / invite) */}
       {infoModal && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 animate-fade-in"
