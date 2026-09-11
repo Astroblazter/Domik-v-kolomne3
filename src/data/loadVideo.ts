@@ -2,6 +2,7 @@ export type VideoItem = {
   id: string;
   poster: string;
   title: string;
+  url?: string;
 };
 
 const files = import.meta.glob('/src/content/video/*.json', {
