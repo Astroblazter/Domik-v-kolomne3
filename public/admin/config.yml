@@ -120,6 +120,7 @@ collections:
     fields:
       - { label: "Обложка (постер)", name: "poster", widget: "image" }
       - { label: "Название", name: "title", widget: "string" }
+      - { label: "Ссылка на видео (YouTube, Rutube и т.д.)", name: "url", widget: "string", required: false }
 
   - name: "about"
     label: "О театре"
