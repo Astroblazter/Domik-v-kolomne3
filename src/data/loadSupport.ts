@@ -7,6 +7,7 @@ export type SupportOption = {
   href: string;
   showDonateInfo: boolean;
   showPartnerInfo: boolean;
+  showInviteInfo: boolean;
 };
 
 type SupportData = {
@@ -19,10 +20,12 @@ type SupportData = {
     href: string;
     showDonateInfo?: boolean;
     showPartnerInfo?: boolean;
+    showInviteInfo?: boolean;
   }[];
   buttonNote: string;
   donateInfoText?: string;
   partnerInfoText?: string;
+  inviteInfoText?: string;
 };
 
 const DEFAULT_DONATE_INFO = `Наш театр — некоммерческий проект. Мы не продаём билеты и не берём плату с участников: играть, репетировать и выходить на сцену может каждый, кому это важно.
@@ -52,6 +55,18 @@ const DEFAULT_PARTNER_INFO = `Наш театр — независимый не�
 
 Это временная страница. Скоро здесь появится отдельная страница с подробным описанием форм партнёрства и формой для связи — чтобы предложить сотрудничество можно было в пару кликов. Спасибо, что рассматриваете возможность стать частью нашего театра!`;
 
+const DEFAULT_INVITE_INFO = `Мы — некоммерческий инклюзивный театр, и каждый показ вне дома становится для нас особенным событием: возможностью встретить новых зрителей и рассказать о том, что мы делаем.
+
+Именно поэтому мы очень ждём приглашений — они помогают нам:
+• показывать спектакли на новых площадках и знакомиться с новой аудиторией
+• участвовать в фестивалях и культурных программах
+• пробовать себя в разных пространствах — от камерных залов до открытых площадок
+• находить единомышленников среди театров, фондов и культурных центров
+
+Мы открыты к разным форматам участия в ваших мероприятиях: отдельный показ, творческая встреча, мастер-класс или совместная программа — обсудим то, что подойдёт именно вам.
+
+Это временная страница. Скоро здесь появится отдельная страница для связи с подробным объяснением вариантов участия в ваших мероприятиях и на ваших площадках. Спасибо, что думаете о нас!`;
+
 const data = supportData as SupportData;
 
 export const SUPPORT_IMAGE: string = data.image;
@@ -68,6 +83,8 @@ export const SUPPORT_OPTIONS: SupportOption[] = data.options.map((o, i) => ({
     typeof o.showDonateInfo === 'boolean' ? o.showDonateInfo : /пожертвован/i.test(o.label),
   showPartnerInfo:
     typeof o.showPartnerInfo === 'boolean' ? o.showPartnerInfo : /партн[её]р/i.test(o.label),
+  showInviteInfo:
+    typeof o.showInviteInfo === 'boolean' ? o.showInviteInfo : /пригласи/i.test(o.label),
 }));
 
 export const SUPPORT_BUTTON_NOTE: string = data.buttonNote;
@@ -75,3 +92,5 @@ export const SUPPORT_DONATE_INFO_TEXT: string =
   data.donateInfoText && data.donateInfoText.trim() ? data.donateInfoText : DEFAULT_DONATE_INFO;
 export const SUPPORT_PARTNER_INFO_TEXT: string =
   data.partnerInfoText && data.partnerInfoText.trim() ? data.partnerInfoText : DEFAULT_PARTNER_INFO;
+export const SUPPORT_INVITE_INFO_TEXT: string =
+  data.inviteInfoText && data.inviteInfoText.trim() ? data.inviteInfoText : DEFAULT_INVITE_INFO;
