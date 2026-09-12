@@ -159,7 +159,7 @@ export function Performances() {
                 </div>
               )}
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
                 <div onClick={() => setSelectedId(null)}>
                   <Button as="a" href="#contacts" variant="primary" size="md">
                     Записаться
@@ -171,7 +171,7 @@ export function Performances() {
                     href={selected.videoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    variant="secondary"
+                    variant="primary"
                     size="md"
                   >
                     Посмотреть видео
