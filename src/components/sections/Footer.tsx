@@ -31,6 +31,8 @@ export function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center rounded-full border border-hairline bg-canvas px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:border-primary/40 hover:text-primary"
                 >
                   {s.label}
