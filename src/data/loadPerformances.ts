@@ -7,9 +7,9 @@ export type Performance = {
   image: string;
   description: string;
   status: string;
+  videoUrl?: string;
 };
 
-// Vite 6: подхватываем все JSON-файлы спектаклей, которые сохраняет CMS
 const files = import.meta.glob('/src/content/performances/*.json', {
   eager: true,
   import: 'default',
