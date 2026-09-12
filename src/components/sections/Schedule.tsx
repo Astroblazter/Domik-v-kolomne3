@@ -1,8 +1,8 @@
-import { SCHEDULE } from '@/data/loadSchedule';
+import { CalendarDays, Clock, MapPin } from 'lucide-react';
+import { SCHEDULE, formatEventDate, formatEventTime, isPastEvent } from '@/data/loadSchedule';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/Button';
-import { CalendarDays, Clock, MapPin } from 'lucide-react';
 
 export function Schedule() {
   if (SCHEDULE.length === 0) {
@@ -26,51 +26,66 @@ export function Schedule() {
     );
   }
 
+  // Index of the first past event, so we can drop in an "История" divider right above it.
+  const firstPastIndex = SCHEDULE.findIndex((ev) => isPastEvent(ev.date));
+  const hasUpcoming = firstPastIndex !== 0;
+  const hasPast = firstPastIndex !== -1;
+
   return (
     <section id="schedule" className="section-y">
       <div className="container-x">
         <SectionHeading
           eyebrow="Афиша"
           title="Ближайшие показы"
-          intro="Демонстрационная афиша. Когда расписание будет составлено, здесь появятся настоящие даты, площадки и время."
+          intro="Даты и площадки ближайших спектаклей. Ниже — архив прошедших показов."
         />
-
         <ul className="mt-12 divide-y divide-hairline border-y border-hairline">
-          {SCHEDULE.map((event, i) => (
-            <Reveal as="li" key={event.id} delay={i * 60}>
-              <div className="group flex flex-col gap-6 py-6 transition-colors hover:bg-surface/60 sm:flex-row sm:items-center sm:gap-8 sm:px-4 sm:-mx-4 sm:rounded-2xl">
-                {/* Date block */}
-                <div className="flex shrink-0 items-center gap-4 sm:w-56">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-white">
-                    <CalendarDays size={24} />
-                  </div>
-                  <div className="text-sm">
-                    <div className="font-medium text-ink">{event.date}</div>
-                    <div className="text-muted">{event.time}</div>
-                  </div>
+          {SCHEDULE.map((ev, i) => (
+            <li key={ev.id}>
+              {hasUpcoming && hasPast && i === firstPastIndex && (
+                <div className="flex items-center gap-4 pt-10 pb-2">
+                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                    История показов
+                  </span>
+                  <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
                 </div>
-
-                {/* Details */}
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium text-ink">{event.performance}</h3>
-                  <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted">
-                    <span className="inline-flex items-center gap-1.5">
-                      <MapPin size={14} className="text-primary" /> {event.venue}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock size={14} className="text-primary" /> {event.time}
-                    </span>
+              )}
+              <Reveal delay={Math.min(i, 6) * 60}>
+                <div
+                  className={`group flex flex-col gap-6 py-6 transition-colors hover:bg-surface/60 sm:flex-row sm:items-center sm:gap-8 sm:px-4 sm:-mx-4 sm:rounded-2xl ${
+                    isPastEvent(ev.date) ? 'opacity-70' : ''
+                  }`}
+                >
+                  <div className="flex shrink-0 items-center gap-4 sm:w-56">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-white">
+                      <CalendarDays size={24} />
+                    </div>
+                    <div className="text-sm">
+                      <div className="font-medium text-ink">{formatEventDate(ev.date)}</div>
+                      <div className="text-muted">{formatEventTime(ev.date)}</div>
+                    </div>
                   </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-ink">{ev.performance}</h3>
+                    <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted">
+                      <span className="inline-flex items-center gap-1.5">
+                        <MapPin size={14} className="text-primary" /> {ev.venue}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock size={14} className="text-primary" /> {formatEventTime(ev.date)}
+                      </span>
+                    </div>
+                  </div>
+                  {!isPastEvent(ev.date) && (
+                    <div className="shrink-0">
+                      <Button as="a" href="#contacts" variant="secondary" size="md">
+                        Записаться
+                      </Button>
+                    </div>
+                  )}
                 </div>
-
-                {/* CTA */}
-                <div className="shrink-0">
-                  <Button as="a" href="#contacts" variant="secondary" size="md">
-                    Записаться
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ul>
       </div>
