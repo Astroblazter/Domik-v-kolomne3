@@ -64,6 +64,7 @@ collections:
       - { label: "Обложка", name: "image", widget: "image" }
       - { label: "Описание", name: "description", widget: "text" }
       - { label: "Статус", name: "status", widget: "string", hint: "например: в репертуаре / премьера сезона" }
+      - { label: "Ссылка на видео спектакля", name: "videoUrl", widget: "string", required: false }
 
   - name: "contacts"
     label: "Контакты"
