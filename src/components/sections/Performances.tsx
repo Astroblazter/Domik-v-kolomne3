@@ -159,10 +159,24 @@ export function Performances() {
                 </div>
               )}
 
-              <div className="mt-7" onClick={() => setSelectedId(null)}>
-                <Button as="a" href="#contacts" variant="primary" size="md">
-                  Записаться
-                </Button>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <div onClick={() => setSelectedId(null)}>
+                  <Button as="a" href="#contacts" variant="primary" size="md">
+                    Записаться
+                  </Button>
+                </div>
+                {selected.videoUrl && (
+                  <Button
+                    as="a"
+                    href={selected.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="secondary"
+                    size="md"
+                  >
+                    Посмотреть видео
+                  </Button>
+                )}
               </div>
             </div>
           </div>
