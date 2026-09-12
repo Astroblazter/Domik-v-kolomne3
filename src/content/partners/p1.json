@@ -1,1 +1,5 @@
-{ "name": "Партнёр проекта", "logo": "", "url": "" }
+{
+  "name": "СПб ГБУ «Дом молодежи «Рекорд»",
+  "logo": "/images/лого-рекорд.png",
+  "url": "https://dmrecord.admiral.gov.spb.ru/"
+}
